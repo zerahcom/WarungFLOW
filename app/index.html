@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" />
     
     <script>
         tailwind.config = {
@@ -16,8 +17,8 @@
                     colors: {
                         primary: '#2e7d32',
                         'primary-dark': '#1b5e20',
-                        'primary-container': '#e8f5e9',
-                        'on-primary-container': '#002105',
+                        'primary-container': '#b0f7ad',
+                        'on-primary-container': '#002104',
                         secondary: '#425e49',
                         'secondary-container': '#c4e8cc',
                         'on-secondary-container': '#00210b',
@@ -25,10 +26,10 @@
                         'surface-container-low': '#f6f3f2',
                         'surface-container': '#f0eeed',
                         'surface-container-high': '#e6e4e3',
-                        'on-surface': '#1c1b1b',
-                        'on-surface-variant': '#444746',
-                        outline: '#747775',
-                        'outline-variant': '#c4c7c5',
+                        'on-surface': '#1f1b1b',
+                        'on-surface-variant': '#49454f',
+                        outline: '#79747e',
+                        'outline-variant': '#c4c6cf',
                         error: '#ba1a1a',
                         'error-container': '#ffdad6',
                         'on-error-container': '#410002',
@@ -47,13 +48,14 @@
     <style>
         .material-symbols-rounded { font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24; }
         .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-icons-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
         .hide-scrollbar::-webkit-scrollbar { display: none; }
         .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         input::-webkit-outer-spin-button, input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
         input[type=number] { -moz-appearance: textfield; }
         
-        .tab-active { color: #2e7d32; border-bottom: 2px solid #2e7d32; }
-        input:focus { outline: none; border-color: #2e7d32; }
+        input:focus { outline: none; }
+        .otp-input:focus { border-color: #2e7d32; box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2); }
         
         @keyframes scale-in { 0% { transform: scale(0.95); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
         .animate-success { animation: scale-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
@@ -64,119 +66,221 @@
     <div id="app-shell" class="w-full min-h-screen flex flex-col bg-white transition-all duration-300">
 
         <div id="screen-login" class="flex flex-col md:flex-row flex-1 h-full w-full bg-white overflow-y-auto hide-scrollbar">
-            
-            <div class="hidden md:flex md:w-1/2 relative bg-primary items-center justify-center p-12 overflow-hidden text-white">
-                <div class="absolute inset-0 opacity-20">
-                    <img src="https://images.unsplash.com/photo-1534723452862-4c874018d66d?auto=format&fit=crop&q=80&w=2000" alt="Warung Background" class="w-full h-full object-cover">
+            <div class="hidden md:flex md:w-1/2 relative bg-[#2e7d32] items-center justify-center p-12 overflow-hidden text-white">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                    <div class="absolute top-1/3 right-0 w-64 h-64 bg-green-400 rounded-full blur-3xl"></div>
                 </div>
-                <div class="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary-dark/95"></div>
                 
-                <div id="hero-masuk-content" class="relative z-10 max-w-lg space-y-6">
+                <div id="hero-masuk-content" class="relative z-10 max-w-lg space-y-6 w-full px-4">
                     <div class="flex items-center gap-3">
                         <div class="bg-white/10 p-2 rounded-xl backdrop-blur-sm">
                             <span class="material-symbols-outlined text-white text-3xl">storefront</span>
                         </div>
                         <h1 class="text-3xl font-bold tracking-tight">WarungFlow</h1>
                     </div>
+                    <div class="w-16 h-1.5 bg-white rounded-full"></div>
                     <h2 class="text-4xl font-extrabold leading-tight">Solusi Digitalisasi Ekosistem Warung Modern.</h2>
                     <p class="text-primary-container text-base leading-relaxed">Pantau perkembangan transaksi, kelola margin keuntungan kas, dan awasi ketersediaan gudang kapan saja secara real-time.</p>
                 </div>
 
-                <div id="hero-daftar-content" class="hidden relative z-10 max-w-lg">
-                    <div class="flex items-center gap-3 mb-10">
-                        <span class="material-symbols-outlined text-white text-4xl">storefront</span>
-                        <h1 class="text-3xl font-bold tracking-tight">WarungFlow</h1>
-                    </div>
-                    <h2 class="text-4xl font-extrabold leading-tight mb-4">Kelola stok warung Anda dengan lebih cerdas dan cepat.</h2>
-                    <p class="text-primary-container text-sm leading-relaxed mb-8">Bergabunglah dengan ribuan pemilik toko yang telah mendigitalkan inventaris mereka untuk pertumbuhan usaha yang lebih pasti.</p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
-                            <span class="material-symbols-outlined text-white mb-2 text-xl">speed</span>
-                            <h3 class="text-white text-sm font-bold mb-0.5">2x Lebih Cepat</h3>
-                            <p class="text-primary-container text-xs">Input Transaksi Kasir</p>
-                        </div>
-                        <div class="bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/15">
-                            <span class="material-symbols-outlined text-white mb-2 text-xl">inventory_2</span>
-                            <h3 class="text-white text-sm font-bold mb-0.5">Otomatis</h3>
-                            <p class="text-primary-container text-xs">Pembaruan Laporan Stok</p>
+                <div id="hero-daftar-content" class="hidden relative z-10 max-w-lg w-full px-4">
+                    <h1 class="text-4xl font-bold tracking-tight mb-4">WarungFlow</h1>
+                    <div class="w-16 h-1.5 bg-white rounded-full mb-12"></div>
+                    <div>
+                        <h2 class="text-4xl font-extrabold leading-tight mb-6">Kelola stok warung Anda dengan lebih cerdas dan cepat.</h2>
+                        <p class="text-green-50 text-base leading-relaxed mb-8">Bergabunglah dengan ribuan pemilik toko yang telah mendigitalkan inventaris mereka untuk pertumbuhan usaha yang lebih pasti.</p>
+                        <div class="flex gap-4">
+                            <div class="bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/20 flex-1">
+                                <span class="material-icons-outlined text-green-300 text-2xl mb-2">speed</span>
+                                <h3 class="text-base font-bold mb-0.5">2x Lebih Cepat</h3>
+                                <p class="text-green-100 text-xs">Input Transaksi</p>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl backdrop-blur-md border border-white/20 flex-1">
+                                <span class="material-icons-outlined text-green-300 text-2xl mb-2">inventory_2</span>
+                                <h3 class="text-base font-bold mb-0.5">Otomatis</h3>
+                                <p class="text-green-100 text-xs">Laporan Stok</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="flex-1 flex flex-col justify-between md:justify-center p-6 md:p-16 max-w-xl mx-auto w-full">
-                <header class="md:hidden py-4 flex justify-center items-center">
+                <header class="md:hidden py-4 flex justify-center items-center border-b border-outline-variant bg-white w-full sticky top-0 z-50">
                     <div class="flex items-center gap-2">
                         <span class="material-symbols-outlined text-primary text-2xl">storefront</span>
-                        <h1 class="text-xl font-extrabold text-primary">WarungFlow</h1>
+                        <h1 class="text-xl font-bold text-primary tracking-tight">WarungFlow</h1>
                     </div>
                 </header>
                 
-                <div class="my-auto w-full max-w-md mx-auto">
-                    <div class="flex justify-center mb-6">
-                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                            <span class="material-symbols-outlined text-primary text-3xl">chat</span>
+                <div class="my-auto w-full max-w-md mx-auto py-8">
+                    <div class="mb-10 flex flex-col items-center text-center">
+                        <div class="w-48 h-auto mb-4 flex items-center justify-center">
+                            <svg class="w-full h-auto text-primary" viewBox="0 0 300 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g fill="currentColor">
+                                    <path d="M43.2 56.4c0 .8-.3 1.5-.9 2.1s-1.3.9-2.1.9H19.8c-.8 0-1.5-.3-2.1-.9s-.9-1.3-.9-2.1V40.2c0-.8.3-1.5.9-2.1s1.3-.9 2.1-.9h20.4c.8 0 1.5.3 2.1.9s.9 1.3.9 2.1v16.2zm-2.4-14.4H19.2v12.6h21.6V42zm-25.2-9c0-.5.2-1 .6-1.4l9-9c.4-.4.9-.6 1.4-.6s1 .2 1.4.6l9 9c.4.4.6.9.6 1.4s-.2 1-.6 1.4l-9 9c-.4.4-.9.6-1.4.6s-1-.2-1.4-.6l-9-9c-.4-.4-.6-.9-.6-1.4z" fill="#2E7D32"/>
+                                    <text x="60" y="55" font-family="Plus Jakarta Sans" font-weight="800" font-size="28" fill="#2E7D32">WarungFlow</text>
+                                    <text x="60" y="72" font-family="Plus Jakarta Sans" font-weight="500" font-size="11" fill="#49454f">Kelola Warung, Lebih Mudah</text>
+                                </g>
+                            </svg>
                         </div>
+                        <h2 id="dynamic-title" class="text-3xl font-bold text-[#1f1b1b] mb-1">Selamat Datang</h2>
+                        <p id="dynamic-subtitle" class="text-on-surface-variant text-sm max-w-[280px] mx-auto">Masuk ke akun WarungFlow Anda untuk mengelola warung dengan mudah.</p>
                     </div>
 
-                    <div id="login-welcome-text" class="text-center mb-6">
-                        <h2 id="dynamic-title" class="text-2xl font-bold mb-2">Selamat Datang</h2>
-                        <p id="dynamic-subtitle" class="text-on-surface-variant text-sm leading-relaxed">Masuk ke akun WarungFlow Anda dengan cepat dan aman via WhatsApp.</p>
+                    <div class="flex border-b border-outline-variant mb-6">
+                        <button id="tab-masuk" class="flex-1 py-3 text-center font-bold text-primary border-b-2 border-primary transition-all" onclick="switchTab('masuk')">Masuk</button>
+                        <button id="tab-daftar" class="flex-1 py-3 text-center font-medium text-on-surface-variant transition-all" onclick="switchTab('daftar')">Daftar</button>
                     </div>
 
-                    <div class="flex border-b border-gray-200 mb-6">
-                        <button id="tab-masuk" class="flex-1 py-3 text-base font-semibold tab-active transition-all" onclick="switchTab('masuk')">Masuk</button>
-                        <button id="tab-daftar" class="flex-1 py-3 text-base font-semibold text-on-surface-variant hover:text-primary transition-all" onclick="switchTab('daftar')">Daftar</button>
-                    </div>
-
-                    <div id="form-masuk">
-                        <div class="relative mb-6">
-                            <label for="phone-masuk" class="absolute -top-2.5 left-4 px-1.5 bg-white text-xs font-bold text-primary z-10">Nomor WhatsApp</label>
-                            <div class="flex items-center border border-gray-300 rounded-2xl px-4 py-3.5 focus-within:border-primary bg-white">
-                                <span class="text-on-surface font-semibold border-r border-gray-200 pr-3 mr-3">+62</span>
-                                <input type="tel" id="phone-masuk" placeholder="812 3456 7890" class="w-full bg-transparent focus:outline-none text-base font-medium">
+                    <div id="form-masuk" class="space-y-6">
+                        <div class="space-y-4">
+                            <div class="relative">
+                                <label class="absolute -top-2 left-3 bg-surface px-1 text-xs font-medium text-primary z-10">Username</label>
+                                <div class="flex items-center border border-primary rounded-xl px-4 py-3.5 bg-white focus-within:ring-2 focus-within:ring-primary/20">
+                                    <span class="material-icons-outlined text-on-surface-variant mr-3">person_outline</span>
+                                    <input type="text" placeholder="Masukkan username Anda" class="w-full bg-transparent outline-none text-on-surface text-base">
+                                </div>
+                            </div>
+                            <div class="relative">
+                                <label class="absolute -top-2 left-3 bg-surface px-1 text-xs font-medium text-on-surface-variant z-10">Password</label>
+                                <div class="flex items-center border border-outline rounded-xl px-4 py-3.5 bg-white focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+                                    <span class="material-icons-outlined text-on-surface-variant mr-3">lock_outline</span>
+                                    <input type="password" placeholder="••••••••" class="w-full bg-transparent outline-none text-on-surface text-base tracking-widest">
+                                </div>
                             </div>
                         </div>
-                        <button id="btn-login-submit" class="w-full bg-primary text-white py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-2 hover:bg-opacity-90 active:scale-[0.98] transition-all shadow-md">
-                            <span>Kirim OTP</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+                        <button id="btn-login-submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-md flex items-center justify-center gap-2 hover:bg-[#25632a] active:scale-[0.98] transition-all">
+                            <span>Masuk</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
+                        </button>
+                        <div class="text-center mt-6">
+                            <p class="text-sm text-on-surface-variant">
+                                Masuk sebagai Kasir? 
+                                <button id="link-to-login-kasir" class="text-primary font-bold hover:underline ml-1 focus:outline-none">Klik di sini</button>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div id="form-daftar" class="hidden space-y-6">
+                        <div class="space-y-4">
+                            <div class="relative">
+                                <label class="absolute -top-2 left-3 bg-surface px-1 text-xs font-medium text-primary z-10">Nomor WhatsApp</label>
+                                <div class="flex items-center border border-outline rounded-xl px-4 py-3.5 bg-white focus-within:border-primary focus-within:ring-2 focus-within:ring-primary/20">
+                                    <span class="material-icons-outlined text-on-surface-variant mr-3">phone</span>
+                                    <input type="tel" id="whatsapp-reg-field" placeholder="081234567890" class="w-full bg-transparent outline-none text-on-surface text-base">
+                                </div>
+                            </div>
+                            <p class="text-[10px] text-on-surface-variant px-2 italic">Kami akan mengirimkan kode verifikasi ke nomor ini.</p>
+                        </div>
+                        <button id="btn-register-submit" class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-md flex items-center justify-center gap-2 hover:bg-[#25632a] active:scale-[0.98] transition-all">
+                            <span>Daftar Sekarang</span><span class="material-symbols-outlined text-lg">arrow_forward</span>
                         </button>
                     </div>
 
-                    <div id="form-daftar" class="hidden space-y-4">
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Nama Pemilik</label>
-                            <div class="relative flex items-center">
-                                <span class="material-symbols-outlined absolute left-4 text-gray-400 text-xl">person</span>
-                                <input type="text" placeholder="Masukkan nama lengkap Anda" class="w-full border border-gray-300 rounded-2xl py-3.5 pl-11 pr-4 text-base font-medium transition-all focus:border-primary focus:ring-1 focus:ring-primary bg-transparent outline-none">
-                            </div>
+                    <div class="mt-8 pt-4 border-t border-gray-100 social-badges">
+                        <div class="flex justify-center gap-4 mb-4">
+                            <button class="p-2.5 border border-outline-variant rounded-xl bg-white shadow-sm hover:bg-gray-50 transition-colors">
+                                <img src="https://www.gstatic.com/images/branding/product/1x/gsa_512dp.png" alt="Google" class="w-5 h-5 grayscale opacity-60">
+                            </button>
+                            <button class="p-2.5 border border-outline-variant rounded-xl bg-white shadow-sm hover:bg-gray-50 transition-colors">
+                                <span class="material-icons-outlined text-on-surface-variant text-xl opacity-60">fingerprint</span>
+                            </button>
                         </div>
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Nama Warung</label>
-                            <div class="relative flex items-center">
-                                <span class="material-symbols-outlined absolute left-4 text-gray-400 text-xl">store</span>
-                                <input type="text" placeholder="Contoh: Toko Berkah Jaya" class="w-full border border-gray-300 rounded-2xl py-3.5 pl-11 pr-4 text-base font-medium transition-all focus:border-primary focus:ring-1 focus:ring-primary bg-transparent outline-none">
-                            </div>
-                        </div>
-                        <div class="space-y-1.5">
-                            <label class="text-xs font-bold text-primary uppercase tracking-wider ml-1">Nomor WhatsApp</label>
-                            <div class="relative flex items-center">
-                                <span class="material-symbols-outlined absolute left-4 text-gray-400 text-xl">smartphone</span>
-                                <input type="tel" placeholder="08123456xxxx" class="w-full border border-gray-300 rounded-2xl py-3.5 pl-11 pr-4 text-base font-medium transition-all focus:border-primary focus:ring-1 focus:ring-primary bg-transparent outline-none">
-                            </div>
-                        </div>
-                        <button id="btn-register-submit" class="w-full bg-primary text-white py-4 rounded-2xl font-bold text-base flex items-center justify-center gap-2 hover:bg-opacity-90 active:scale-[0.98] transition-all shadow-md mt-4">
-                            <span>Daftar Sekarang</span><span class="material-symbols-outlined text-lg">person_add</span>
-                        </button>
-                    </div>
-
-                    <div id="alt-kasir-container" class="mt-6 text-center">
-                        <p class="text-sm font-medium text-on-surface-variant">
-                            Masuk sebagai Kasir? 
-                            <button id="link-to-login-kasir" class="text-primary font-bold hover:underline ml-1 focus:outline-none">Klik di sini</button>
+                        <p class="text-[10px] text-center text-on-surface-variant leading-relaxed">
+                            Dengan melanjutkan, Anda menyetujui <a href="#" class="underline">Syarat & Ketentuan</a> serta <a href="#" class="underline">Kebijakan Privasi</a> WarungFlow.
                         </p>
                     </div>
+
                 </div>
             </div>
+        </div>
+
+        <div id="screen-verify-wa" class="hidden flex flex-col md:flex-row flex-1 h-full w-full bg-white overflow-y-auto hide-scrollbar">
+            <main class="hidden md:flex md:w-1/2 bg-[#1b5e20] text-white p-12 flex-col justify-between relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                    <div class="absolute top-1/2 right-0 w-64 h-64 bg-green-400 rounded-full blur-3xl"></div>
+                </div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-10">
+                        <div class="bg-white p-2 rounded-lg"><span class="material-symbols-outlined text-[#1b5e20] text-2xl">storefront</span></div>
+                        <h1 class="text-2xl font-bold tracking-tight">WarungFlow</h1>
+                    </div>
+                    <div class="max-w-md space-y-6">
+                        <h2 class="text-4xl font-bold leading-tight">Verifikasi Akun Anda</h2>
+                        <p class="text-green-50 text-sm leading-relaxed">Keamanan data inventaris dan transaksi Anda adalah prioritas utama kami. Melalui verifikasi dua langkah, kami memastikan hanya Anda yang memiliki akses penuh ke sistem.</p>
+                    </div>
+                </div>
+            </main>
+            <section class="flex-1 flex flex-col justify-center p-6 md:p-16 max-w-xl mx-auto w-full">
+                <div class="w-full max-w-md">
+                    <button class="btn-back-to-login-panel flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors mb-12 group focus:outline-none">
+                        <span class="material-icons-outlined text-lg group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+                        <span class="text-sm font-bold">Kembali</span>
+                    </button>
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-on-surface mb-2">Verifikasi Nomor WhatsApp</h2>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">Silakan konfirmasi ulang nomor WhatsApp aktif Anda untuk pengiriman token OTP.</p>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="space-y-1.5">
+                            <label class="block text-xs font-bold text-primary uppercase tracking-wider ml-1">Nomor WhatsApp</label>
+                            <div class="relative flex items-center">
+                                <span class="material-icons-outlined absolute left-4 text-gray-400 text-xl">smartphone</span>
+                                <input type="tel" id="whatsapp-input-field" class="w-full bg-surface-container-low border border-gray-300 rounded-2xl py-3.5 pl-11 pr-4 font-medium text-base text-on-surface" placeholder="+62 812 3456 7890">
+                            </div>
+                        </div>
+                        <button id="btn-submit-verification-code" class="w-full bg-[#2e7d32] hover:bg-[#1b5e20] text-white font-bold py-4 rounded-xl shadow-md flex justify-center items-center gap-2 text-base">
+                            Kirim Kode
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="screen-verify-otp" class="hidden flex flex-col md:flex-row flex-1 h-full w-full bg-white overflow-y-auto hide-scrollbar">
+            <main class="hidden md:flex md:w-1/2 bg-[#1b5e20] text-white p-12 flex-col justify-between relative overflow-hidden">
+                <div class="absolute inset-0 opacity-10">
+                    <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+                    <div class="absolute top-1/2 right-0 w-64 h-64 bg-green-400 rounded-full blur-3xl"></div>
+                </div>
+                <div class="relative z-10">
+                    <div class="flex items-center gap-3 mb-12">
+                        <div class="bg-white p-2 rounded-lg"><span class="material-symbols-outlined text-[#1b5e20] text-2xl">storefront</span></div>
+                        <h1 class="text-2xl font-bold tracking-tight">WarungFlow</h1>
+                    </div>
+                    <div class="max-w-md space-y-6">
+                        <h2 class="text-4xl font-bold leading-tight">Verifikasi Akun Anda</h2>
+                        <p class="text-green-50 text-sm leading-relaxed">Kami menjaga keamanan toko digital Anda dengan standar enkripsi perbankan tertinggi.</p>
+                    </div>
+                </div>
+            </main>
+            <section class="flex-1 flex flex-col justify-center p-6 md:p-16 max-w-xl mx-auto w-full">
+                <div class="w-full max-w-md">
+                    <button class="btn-back-to-login-panel flex items-center gap-1.5 text-on-surface-variant hover:text-primary transition-colors mb-12 group focus:outline-none">
+                        <span class="material-icons-outlined text-lg group-hover:-translate-x-0.5 transition-transform">arrow_back</span>
+                        <span class="text-sm font-bold">Kembali</span>
+                    </button>
+                    <div class="mb-8">
+                        <h2 class="text-2xl font-bold text-on-surface mb-2">Verifikasi OTP WhatsApp</h2>
+                        <p class="text-on-surface-variant text-sm leading-relaxed">Kami telah mengirimkan kode OTP ke nomor WhatsApp Anda. Silakan masukkan 6 digit kode di bawah ini.</p>
+                    </div>
+                    <div class="space-y-8">
+                        <div id="otp-inputs-container" class="flex justify-between gap-2">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl font-bold bg-surface-container-low border border-gray-300 rounded-xl transition-all">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl font-bold bg-surface-container-low border border-gray-300 rounded-xl transition-all">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl font-bold bg-surface-container-low border border-gray-300 rounded-xl transition-all">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl font-bold bg-surface-container-low border border-gray-300 rounded-xl transition-all">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl font-bold bg-surface-container-low border border-gray-300 rounded-xl transition-all">
+                            <input type="text" maxlength="1" class="otp-input w-12 h-14 text-center text-xl font-bold bg-surface-container-low border border-gray-300 rounded-xl transition-all">
+                        </div>
+                        <button id="btn-submit-otp-verification" class="w-full bg-[#1b5e20] hover:bg-[#144316] text-white font-bold py-4 rounded-xl shadow-md active:scale-[0.98] transition-all flex justify-center items-center gap-2 text-base">
+                            <span>Verifikasi</span><span class="material-icons-outlined text-lg">verified</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <div id="screen-login-kasir" class="hidden flex flex-col md:flex-row flex-1 h-full w-full bg-white overflow-y-auto hide-scrollbar">
@@ -229,38 +333,51 @@
             </div>
         </div>
 
-        <div id="screen-onboarding1" class="hidden flex flex-col flex-1 h-full w-full bg-white overflow-y-auto hide-scrollbar">
+        <div id="screen-onboarding1" class="hidden flex flex-col flex-1 h-full w-full bg-white overflow-y-auto hide-scrollbar onboarding-view">
             <header class="w-full bg-white border-b border-gray-100 sticky top-0 z-50">
                 <div class="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-                    <h1 class="text-lg font-extrabold text-primary">WarungFlow</h1>
-                    <div class="text-xs font-bold text-on-surface-variant bg-gray-100 px-3 py-1 rounded-full">Langkah 1 dari 2</div>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-2xl">storefront</span>
+                        <h1 class="text-lg font-extrabold text-primary">WarungFlow</h1>
+                    </div>
+                    <div class="text-xs font-bold text-on-surface-variant bg-gray-100 px-3 py-1 rounded-full">Langkah 1 dari 4</div>
                 </div>
-                <div class="w-full h-1 bg-gray-100"><div class="bg-primary h-full w-1/2 transition-all duration-300"></div></div>
+                <div class="w-full h-1 bg-gray-100"><div class="bg-primary h-full w-1/4 transition-all duration-300"></div></div>
             </header>
-            <main class="flex-1 max-w-2xl mx-auto w-full px-6 py-8 space-y-6">
+            <main class="flex-1 max-w-2xl mx-auto w-full px-6 py-8 space-y-8">
                 <div>
-                    <h2 class="text-3xl font-extrabold text-on-surface mb-1.5 tracking-tight">Profil Warung</h2>
-                    <p class="text-on-surface-variant text-sm">Beri identitas tokomu agar struk penjualan terlihat lebih profesional.</p>
+                    <h2 class="text-3xl font-extrabold text-on-surface mb-2 tracking-tight">Profil Warung</h2>
+                    <p class="text-on-surface-variant text-base leading-relaxed">Mari mulai dengan identitas bisnismu agar laporan terasa lebih personal.</p>
                 </div>
-                <div class="space-y-5 bg-gray-50/50 p-6 rounded-3xl border border-gray-100">
+                <div class="space-y-6 bg-surface-container-low p-6 rounded-3xl border border-gray-100">
                     <div class="space-y-1.5">
-                        <label class="text-xs font-bold text-primary uppercase tracking-wider">Nama Warung</label>
-                        <input type="text" placeholder="Contoh: Warung Berkah Jaya" class="w-full border-2 border-gray-200 focus:border-primary rounded-2xl px-4 py-3.5 outline-none font-medium text-sm bg-white">
+                        <label class="block text-sm font-semibold text-primary uppercase tracking-wider ml-1">Nama Warung</label>
+                        <div class="relative flex items-center">
+                            <span class="material-icons-outlined absolute left-4 text-gray-400 text-xl">store</span>
+                            <input type="text" placeholder="Contoh: Warung Berkah Jaya" class="w-full bg-white border border-gray-300 rounded-2xl py-4 pl-12 pr-4 transition-all focus:ring-2 focus:ring-primary focus:border-primary font-medium text-base text-on-surface">
+                        </div>
                     </div>
                     <div class="space-y-1.5">
-                        <label class="text-xs font-bold text-primary uppercase tracking-wider">Alamat Lengkap</label>
-                        <textarea rows="3" placeholder="Jl. Mawar No. 123, Jakarta Selatan" class="w-full border-2 border-gray-200 focus:border-primary rounded-2xl px-4 py-3.5 outline-none font-medium text-sm bg-white resize-none"></textarea>
+                        <label class="block text-sm font-semibold text-primary uppercase tracking-wider ml-1">Alamat Lengkap</label>
+                        <div class="relative flex">
+                            <span class="material-icons-outlined absolute left-4 top-4 text-gray-400 text-xl">place</span>
+                            <textarea rows="4" placeholder="Jl. Mawar No. 123, Jakarta Selatan" class="w-full bg-white border border-gray-300 rounded-2xl py-4 pl-12 pr-4 transition-all focus:ring-2 focus:ring-primary focus:border-primary font-medium text-base text-on-surface resize-none hide-scrollbar"></textarea>
+                        </div>
                     </div>
+                </div>
+                <div class="bg-success-container text-on-success-container p-4 rounded-2xl flex items-center gap-3 border border-success/30">
+                    <span class="material-symbols-outlined text-success">info</span>
+                    <p class="text-sm font-medium">Informasi ini akan tercetak pada struk digital yang dikirim ke pelanggan.</p>
                 </div>
             </main>
-            <footer class="bg-white border-t border-gray-100 py-4">
+            <footer class="bg-white border-t border-gray-100 py-4 w-full sticky bottom-0 z-50">
                 <div class="max-w-2xl mx-auto w-full px-6">
-                    <button id="btn-profile-submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-2xl text-sm transition-all shadow-md">Simpan & Selesai</button>
+                    <button id="btn-profile-submit" class="w-full bg-primary hover:bg-primary-dark text-white font-bold py-4 rounded-xl text-base transition-all shadow-md flex items-center justify-center gap-2">Simpan & Lanjut <span class="material-symbols-outlined text-lg">arrow_forward</span></button>
                 </div>
             </footer>
         </div>
 
-        <div id="screen-onboarding4" class="hidden flex flex-col flex-1 h-full w-full bg-white overflow-y-auto hide-scrollbar justify-center items-center">
+        <div id="screen-onboarding4" class="hidden flex flex-col flex-1 h-full w-full bg-white overflow-y-auto hide-scrollbar justify-center items-center onboarding-view">
             <main class="max-w-md mx-auto w-full px-6 py-12 flex flex-col items-center text-center">
                 <div class="w-28 h-28 bg-primary rounded-full flex items-center justify-center mb-6 shadow-xl shadow-primary/20 animate-success">
                     <span class="material-symbols-rounded text-white text-5xl">check</span>
@@ -273,7 +390,7 @@
             </main>
         </div>
 
-        <div id="screen-dashboard" class="hidden flex flex-col flex-1 h-full w-full bg-slate-50 overflow-y-auto hide-scrollbar pb-24">
+        <div id="screen-dashboard" class="hidden flex flex-col flex-1 h-full w-full bg-slate-50 overflow-y-auto hide-scrollbar pb-24 dashboard-view">
             <header class="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-sm">
                 <div class="max-w-7xl mx-auto w-full flex items-center justify-between px-6 h-16">
                     <div class="flex items-center gap-2">
@@ -301,7 +418,7 @@
             <div id="nav-container-dashboard" class="fixed bottom-0 left-0 right-0 z-40"></div>
         </div>
 
-        <div id="screen-stock" class="hidden flex flex-col flex-1 h-full w-full bg-slate-50 overflow-y-auto hide-scrollbar pb-24">
+        <div id="screen-stock" class="hidden flex flex-col flex-1 h-full w-full bg-slate-50 overflow-y-auto hide-scrollbar pb-24 dashboard-view">
             <header class="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-sm">
                 <div class="max-w-7xl mx-auto w-full flex items-center justify-between px-6 h-16">
                     <div class="flex items-center gap-2">
@@ -316,14 +433,11 @@
                         <h4 class="font-bold text-on-surface text-lg">Beras Pandan 5kg</h4>
                     </div>
                 </div>
-                <div class="bg-gradient-to-br from-green-900 to-gray-950 text-white rounded-3xl p-5 shadow-md">
-                    <p class="text-sm leading-relaxed opacity-90">Tempatkan <span class="font-bold text-emerald-300">Mi Instan</span> dekat <span class="font-bold text-emerald-300">Teh Kotak</span> di hari Jumat malam untuk meningkatkan omzet silang.</p>
-                </div>
             </main>
             <div id="nav-container-stock" class="fixed bottom-0 left-0 right-0 z-40"></div>
         </div>
 
-        <div id="screen-cashier" class="hidden flex-1 flex flex-col md:flex-row h-full w-full bg-surface-container-low overflow-hidden transition-all duration-300">
+        <div id="screen-cashier" class="hidden flex-1 flex flex-col md:flex-row h-full w-full bg-surface-container-low overflow-hidden transition-all duration-300 cashier-view">
             <div class="flex-1 flex flex-col min-w-0 h-full">
                 <header class="h-16 bg-white border-b border-outline-variant flex items-center justify-between px-gutter flex-shrink-0">
                     <div class="flex items-center gap-4">
@@ -346,38 +460,30 @@
                     </div>
                 </div>
             </div>
-            <aside class="w-full md:w-[380px] bg-white border-t md:border-t-0 md:border-l border-outline-variant flex flex-col flex-shrink-0 h-1/2 md:h-full z-10 shadow-xl">
+            <aside class="w-full md:w-[380px] bg-white border-t md:border-t-0 md:border-l border-outline-variant flex flex-col flex-shrink-0 h-1/2 md:h-full z-10 shadow-xl relative Pesanan-pane">
                 <div class="p-4 border-b border-outline-variant flex items-center justify-between">
                     <div><h2 class="text-base font-black text-on-surface">Pesanan Baru</h2></div>
                 </div>
-                <div class="flex-1 overflow-y-auto p-4 space-y-4 hide-scrollbar">
-                    <div class="flex items-center gap-3">
-                        <div class="flex-1 min-w-0">
-                            <h4 class="font-bold text-sm text-on-surface truncate">Aqua 600ml</h4>
-                        </div>
-                        <div class="text-right"><p class="font-bold text-sm">Rp 10.000</p></div>
-                    </div>
-                </div>
-                <div class="p-4 bg-gray-50 border-t border-outline-variant space-y-3 pb-24 md:pb-4">
-                    <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-sm hover:bg-primary-dark transition-all shadow-md">Selesaikan Pesanan</button>
+                <div class="p-4 bg-gray-50 border-t border-outline-variant space-y-3 pb-24 md:pb-4 absolute bottom-0 left-0 right-0 z-20">
+                    <button class="w-full bg-primary text-white py-3 rounded-xl font-bold text-sm hover:bg-primary-dark transition-all shadow-md flex items-center justify-center gap-2"> <span class="material-symbols-outlined text-lg">payments</span> Selesaikan Pesanan</button>
                 </div>
             </aside>
             <div id="nav-container-cashier" class="fixed bottom-0 left-0 right-0 z-40"></div>
         </div>
 
         <template id="global-nav-template">
-            <nav class="bg-white/95 backdrop-blur-md border-t border-gray-100 px-6 py-3 flex justify-between items-center shadow-2xl max-w-xl mx-auto sm:rounded-t-3xl flex justify-between items-center">
-                <button class="nav-btn-home flex flex-col items-center gap-0.5 flex-1 py-1">
-                    <div class="icon-box px-5 py-1 rounded-xl transition-all"><span class="material-symbols-rounded text-[22px]">home</span></div>
-                    <span class="text-[10px] font-bold uppercase tracking-tight">Owner</span>
+            <nav class="bg-white/95 backdrop-blur-md border-t border-gray-100 px-6 py-3 flex justify-between items-center shadow-2xl max-w-xl mx-auto sm:rounded-t-3xl transition-all duration-300">
+                <button class="nav-btn-home flex flex-col items-center gap-1 flex-1 py-1.5 text-on-surface-variant hover:text-primary transition-all">
+                    <div class="icon-box px-5 py-1.5 rounded-full transition-all"><span class="material-symbols-rounded text-2xl">home</span></div>
+                    <span class="text-[11px] font-semibold">Owner</span>
                 </button>
-                <button class="nav-btn-stock flex flex-col items-center gap-0.5 flex-1 py-1">
-                    <div class="icon-box px-5 py-1 rounded-xl transition-all"><span class="material-symbols-rounded text-[22px]">inventory_2</span></div>
-                    <span class="text-[10px] font-bold uppercase tracking-tight">Stok AI</span>
+                <button class="nav-btn-stock flex flex-col items-center gap-1 flex-1 py-1.5 text-on-surface-variant hover:text-primary transition-all">
+                    <div class="icon-box px-5 py-1.5 rounded-full transition-all"><span class="material-symbols-rounded text-2xl">inventory_2</span></div>
+                    <span class="text-[11px] font-semibold">Stok AI</span>
                 </button>
-                <button class="nav-btn-cashier flex flex-col items-center gap-0.5 flex-1 py-1">
-                    <div class="icon-box px-5 py-1 rounded-xl transition-all"><span class="material-symbols-rounded text-[22px]">point_of_sale</span></div>
-                    <span class="text-[10px] font-bold uppercase tracking-tight">Kasir</span>
+                <button class="nav-btn-cashier flex flex-col items-center gap-1 flex-1 py-1.5 text-on-surface-variant hover:text-primary transition-all">
+                    <div class="icon-box px-5 py-1.5 rounded-full transition-all"><span class="material-symbols-rounded text-2xl">point_of_sale</span></div>
+                    <span class="text-[11px] font-semibold">Kasir</span>
                 </button>
             </nav>
         </template>
@@ -388,6 +494,8 @@
         const appShell = document.getElementById('app-shell');
         const screens = {
             login: document.getElementById('screen-login'),
+            verifyWa: document.getElementById('screen-verify-wa'),
+            verifyOtp: document.getElementById('screen-verify-otp'),
             loginKasir: document.getElementById('screen-login-kasir'),
             onboarding1: document.getElementById('screen-onboarding1'),
             onboarding4: document.getElementById('screen-onboarding4'),
@@ -396,108 +504,136 @@
             cashier: document.getElementById('screen-cashier')
         };
 
-        // Bind Clicks Alur Navigasi Utama & Kasir
+        // Bind Klik Navigasi Alur Maju-Mundur
         document.getElementById('btn-login-submit').addEventListener('click', () => navigateTo('dashboard')); 
-        document.getElementById('btn-register-submit').addEventListener('click', () => navigateTo('onboarding1')); 
+        document.getElementById('btn-register-submit').addEventListener('click', () => navigateTo('verifyWa')); 
+        document.getElementById('btn-submit-verification-code').addEventListener('click', () => navigateTo('verifyOtp'));
+        document.getElementById('btn-submit-otp-verification').addEventListener('click', () => navigateTo('onboardingSuccess'));
+        
+        // Klik Tombol Kembali Global pada Layar Validasi
+        const backButtons = document.querySelectorAll('.btn-back-to-login-panel');
+        backButtons.forEach(btn => {
+            btn.addEventListener('click', () => navigateTo('login'));
+        });
+
         document.getElementById('link-to-login-kasir').addEventListener('click', () => navigateTo('loginKasir'));
         document.getElementById('btn-back-to-owner-login').addEventListener('click', () => navigateTo('login'));
         document.getElementById('btn-kasir-login-submit').addEventListener('click', () => navigateTo('cashier'));
         
-        document.getElementById('btn-profile-submit').addEventListener('click', () => navigateTo('onboarding4'));
+        // Alur Sukses Profile -> Dashboard
+        document.getElementById('btn-profile-submit').addEventListener('click', () => navigateTo('dashboard'));
         document.getElementById('btn-to-dashboard').addEventListener('click', () => navigateTo('dashboard'));
         document.getElementById('btn-cek-inventori').addEventListener('click', () => navigateTo('stock'));
 
-        // Fungsi Switch Tab Login & Daftar (Sinkron dengan Hero Visual Desktop Kiri)
+        // Logika Otomatisasi Input Kursor OTP 6 Digit
+        const otpInputs = document.querySelectorAll('#otp-inputs-container input');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', (e) => {
+                if (e.target.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+            });
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Backspace' && e.target.value.length === 0 && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
+        });
+
+        // Switch Tab Login & Daftar
         function switchTab(tab) {
             const tabMasuk = document.getElementById('tab-masuk');
             const tabDaftar = document.getElementById('tab-daftar');
             const formMasuk = document.getElementById('form-masuk');
             const formDaftar = document.getElementById('form-daftar');
-            
-            const heroMasuk = document.getElementById('hero-masuk-content');
-            const heroDaftar = document.getElementById('hero-daftar-content');
             const dTitle = document.getElementById('dynamic-title');
             const dSubtitle = document.getElementById('dynamic-subtitle');
             
             if (tab === 'masuk') {
-                tabMasuk.classList.add('tab-active');
-                tabMasuk.classList.remove('text-on-surface-variant');
-                tabDaftar.classList.remove('tab-active');
-                tabDaftar.classList.add('text-on-surface-variant');
+                tabMasuk.className = 'flex-1 py-3 text-center font-bold text-primary border-b-2 border-primary transition-all';
+                tabDaftar.className = 'flex-1 py-3 text-center font-medium text-on-surface-variant transition-all hover:text-primary';
                 formMasuk.classList.remove('hidden');
                 formDaftar.classList.add('hidden');
-                
-                // Ganti Visual Hero Kiri ke Mode Masuk
-                heroMasuk.classList.remove('hidden');
-                heroDaftar.classList.add('hidden');
                 dTitle.innerText = "Selamat Datang";
                 dSubtitle.innerText = "Masuk ke akun WarungFlow Anda dengan cepat dan aman via WhatsApp.";
             } else {
-                tabDaftar.classList.add('tab-active');
-                tabDaftar.classList.remove('text-on-surface-variant');
-                tabMasuk.classList.remove('tab-active');
-                tabMasuk.classList.add('text-on-surface-variant');
+                tabDaftar.className = 'flex-1 py-3 text-center font-bold text-primary border-b-2 border-primary transition-all';
+                tabMasuk.className = 'flex-1 py-3 text-center font-medium text-on-surface-variant transition-all hover:text-primary';
                 formDaftar.classList.remove('hidden');
                 formMasuk.classList.add('hidden');
-                
-                // Ganti Visual Hero Kiri ke Mode Daftar Premium
-                heroDaftar.classList.remove('hidden');
-                heroMasuk.classList.add('hidden');
-                dTitle.innerText = "Pendaftaran Akun";
-                dSubtitle.innerText = "Mulai langkah sukses bisnis Anda hari ini.";
+                dTitle.innerText = "Daftar Akun Baru";
+                dSubtitle.innerText = "Mulai langkah sukses digitalisasi warung Anda bersama WarungFlow.";
             }
         }
 
+        // Fungsi Navigasi Inti
         function navigateTo(targetKey) {
+            // Sembunyikan semua layar
             Object.keys(screens).forEach(key => screens[key].classList.add('hidden'));
-            screens[targetKey].classList.remove('hidden');
-            screens[targetKey].scrollTop = 0;
-
-            // Integrasi penuh adaptif layar laptop lebar
-            appShell.classList.remove('max-w-md', 'sm:h-[840px]', 'sm:rounded-[32px]');
-            appShell.classList.add('max-w-full', 'min-h-screen');
-
-            if (['dashboard', 'stock', 'cashier'].includes(targetKey)) {
+            
+            // Atur konteks app shell untuk mode navigasi
+            if (targetKey === 'onboardingSuccess' || targetKey === 'onboarding1' || targetKey === 'verifyWa' || targetKey === 'verifyOtp') {
+                targetKey = targetKey === 'onboardingSuccess' ? 'onboarding4' : targetKey; // normalize key
+                appShell.classList.remove('p-gutter');
+                appShell.classList.add('h-full', 'w-full');
+            } else if (targetKey === 'dashboard' || targetKey === 'stock' || targetKey === 'cashier') {
                 renderGlobalBottomBar(targetKey);
             }
+
+            // Tampilkan layar target
+            const targetScreen = screens[targetKey];
+            if (targetScreen) {
+                targetScreen.classList.remove('hidden');
+                targetScreen.scrollTop = 0; // reset scroll
+            }
         }
 
+        // Fungsi Render Bottom Bar (Ganti jika Mode Dashboard/Kasir)
         function renderGlobalBottomBar(currentActiveKey) {
             const template = document.getElementById('global-nav-template');
-            const containers = {
-                dashboard: document.getElementById('nav-container-dashboard'),
-                stock: document.getElementById('nav-container-stock'),
-                cashier: document.getElementById('nav-container-cashier')
-            };
+            const dashboardNavContainer = document.getElementById('nav-container-dashboard');
+            const stockNavContainer = document.getElementById('nav-container-stock');
+            const cashierNavContainer = document.getElementById('nav-container-cashier');
 
-            Object.values(containers).forEach(box => { if(box) box.innerHTML = ''; });
+            // Hapus nav lama
+            if (dashboardNavContainer) dashboardNavContainer.innerHTML = '';
+            if (stockNavContainer) stockNavContainer.innerHTML = '';
+            if (cashierNavContainer) cashierNavContainer.innerHTML = '';
 
-            const currentActiveContainer = containers[currentActiveKey];
-            if (!currentActiveContainer) return;
+            // Tentukan kontainer aktif
+            let activeContainer;
+            if (currentActiveKey === 'dashboard') activeContainer = dashboardNavContainer;
+            else if (currentActiveKey === 'stock') activeContainer = stockNavContainer;
+            else if (currentActiveKey === 'cashier') activeContainer = cashierNavContainer;
 
+            if (!activeContainer) return; // safeguard
+
+            // Clone templat
             const clone = template.content.cloneNode(true);
             const btnHome = clone.querySelector('.nav-btn-home');
             const btnStock = clone.querySelector('.nav-btn-stock');
             const btnCashier = clone.querySelector('.nav-btn-cashier');
 
-            const menuElements = { dashboard: btnHome, stock: btnStock, cashier: btnCashier };
+            // Aktifkan tombol sesuai layar aktif
+            const buttons = { dashboard: btnHome, stock: btnStock, cashier: btnCashier };
+            const activeBtn = buttons[currentActiveKey];
+            if (activeBtn) {
+                activeBtn.classList.add('text-primary');
+                activeBtn.classList.remove('text-on-surface-variant');
+                activeBtn.querySelector('.icon-box').classList.add('bg-primary-container');
+            }
 
-            Object.keys(menuElements).forEach(key => {
-                const element = menuElements[key];
-                if (key === currentActiveKey) {
-                    element.classList.add('text-primary');
-                    element.querySelector('.icon-box').classList.add('bg-primary-container');
-                } else {
-                    element.classList.add('text-on-surface-variant');
-                }
-            });
-
+            // Bind events
             btnHome.addEventListener('click', () => navigateTo('dashboard'));
             btnStock.addEventListener('click', () => navigateTo('stock'));
             btnCashier.addEventListener('click', () => navigateTo('cashier'));
 
-            currentActiveContainer.appendChild(clone);
+            // Masukkan nav aktif
+            activeContainer.appendChild(clone);
         }
+
+        // Initialize state
+        navigateTo('login');
     </script>
 </body>
 </html>
